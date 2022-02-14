@@ -53,13 +53,13 @@ app.get("/weather", (req, res) => {
         if(error) {
             return res.send({ error })
         } else {
-            getWeather(latitude, longitude, (error, {description, temperature, feelslike} = {}) => {
+            getWeather(latitude, longitude, (error, {description, temperature, feelslike, pressure} = {}) => {
                 if(error) {
                     return res.send({ error })
                 } else {
                     res.send({
                         location,
-                        forcast: description + " with a current temperature of " + temperature + " degrees, that feels like " + feelslike + " degrees",
+                        forcast: description + " with a current temperature of " + temperature + " degrees, that feels like " + feelslike + " degrees. The air pressure is " + pressure,
                         address: req.query.address
                     })
                 }

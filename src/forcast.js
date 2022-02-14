@@ -9,11 +9,12 @@ const getWeather = (latitude, longitude, callback) => {
         } else if(body.error) {
             callback(body.error.info, undefined)
         } else {
-            const {weather_descriptions, temperature, feelslike} = body.current
+            const {weather_descriptions, temperature, feelslike, pressure} = body.current
             callback(undefined, {
                 description: weather_descriptions[0],
                 temperature,
-                feelslike})
+                feelslike,
+                pressure})
         }
     })
 }
